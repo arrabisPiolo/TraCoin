@@ -1,0 +1,132 @@
+$color-blue-purp: linear-gradient(25deg, #2600fc, #ff00ea);
+
+.market-container {
+  max-width: 130rem !important;
+  margin: 0 auto !important;
+  padding: 0 2.5rem !important;
+}
+
+.market-section {
+  background: radial-gradient(circle, #2c213a 10%, transparent 11%);
+  background-size: 6em 6em;
+  background-color: #0f051d;
+  opacity: 1;
+  color: white;
+  padding: 4rem 0;
+  .market-content {
+    display: flex;
+    flex-direction: column;
+    padding: 0 5rem;
+  }
+  h2 {
+    font-size: 4.5rem;
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+  .list-top {
+    display: grid;
+    grid-template-columns: 30% 20% 20% 25%;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: $color-blue-purp;
+    border-radius: 8px 8px 0 0;
+    p:first-child {
+      text-align: left;
+      margin-left: 3rem;
+    }
+  }
+  .list-row {
+    display: flex;
+    flex-direction: column;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+    .coin-row {
+      display: grid;
+      grid-template-columns: 30% 20% 20% 25%;
+      text-align: center;
+      align-items: center;
+      padding: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border-bottom: 1px solid white;
+      &:hover {
+        background-color: #200840;
+        cursor: pointer;
+      }
+      p:first-child {
+        text-align: left;
+        display: flex;
+        align-items: center;
+        img {
+          width: 5rem;
+          height: 5rem;
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+}
+.green-text {
+  color: green;
+}
+.red-text {
+  color: red;
+}
+.loader {
+  margin: 10rem auto;
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+.loader:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fcf;
+  border-color: #fcf transparent #fcf transparent;
+  animation: loader 1.2s linear infinite;
+}
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.pagination {
+  display: flex;
+  gap: 1.3rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+  i {
+    cursor: pointer;
+  }
+}
+
+button {
+  font-size: 2rem;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: white;
+}
+.activePagi {
+  background: $color-blue-purp;
+  color: white;
+}
+
+.pagination i[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
