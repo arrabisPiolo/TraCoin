@@ -1,12 +1,21 @@
-import React, { useState, useEffect } from "react";
-import ReactPaginate from "react-paginate";
+import React, { useState, useEffect, useRef } from "react";
+
 import "./market-update.scss";
 import { Link } from "react-router-dom";
+
+const arrow = (sortOrderName) => {
+  return sortOrderName === "asc" ? <span>&uarr;</span> : <span>&darr;</span>;
+};
 function MarketUpdate() {
   const [currencyData, setCurrencyData] = useState([]);
   const [currentPage, setCurrentPage] = useState();
-
-  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=2&page=${currentPage}&sparkline=false`;
+  const [priceSortOrder, setPriceSortOrder] = useState();
+  const [marketCapSortOrder, setMarketCapSortOrder] = useState();
+  const [sortClicked, setSortClicked] = useState(false);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [selectedDropdownItem, setSelectedDropdownItem] = useState();
+  const dropdownRef = useRef();
+  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=${currentPage}&sparkline=false`;
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(url);
@@ -16,25 +25,21 @@ function MarketUpdate() {
     fetchData();
   }, [url]);
 
-  // useEffect(() => {
-  //   fetch(
-  //     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=4"
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => setCurrencyData(data));
-  // }, []);
-
   function formatNumber(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
   const paginationButtons = [];
-  const start = currentPage > 2 ? currentPage - 2 : 1;
-  const end = start + 4;
-  for (let i = start; i <= end; i++) {
+  for (let i = 1; i <= 5; i++) {
     paginationButtons.push(
       <button
         key={i}
-        onClick={() => setCurrentPage(i)}
+        onClick={() => {
+          // Check whether the current page is the same as the previous page.
+          if (i === currentPage) {
+            return;
+          }
+          setCurrentPage(i);
+        }}
         className={i === currentPage ? "activePagi" : ""}
       >
         {i}
@@ -42,6 +47,25 @@ function MarketUpdate() {
     );
   }
 
+  const handleSort = (key, sortState, setSortState) => {
+    const sortedData = [...currencyData].sort((a, b) => {
+      if (sortState === "asc") {
+        return a[key] - b[key];
+      } else {
+        return b[key] - a[key];
+      }
+    });
+    setCurrencyData(sortedData);
+    setSortState(sortState === "asc" ? "desc" : "asc");
+    setSortClicked(true);
+  };
+
+  const handleDropdownItemClick = (item) => {
+    if (selectedDropdownItem === item) {
+      return;
+    }
+    setSelectedDropdownItem(item);
+  };
   const handlePrevPage = () => {
     setCurrentPage(currentPage - 1);
   };
@@ -49,17 +73,77 @@ function MarketUpdate() {
     setCurrentPage(currentPage + 1);
   };
 
+  const handleClickOutsideDropdown = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setDropdownVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("click", handleClickOutsideDropdown);
+    return () => {
+      window.removeEventListener("click", handleClickOutsideDropdown);
+    };
+  }, []);
+
   console.log(currencyData);
   return (
     <>
       <section className="market-section" id="market">
         <div className="market-container">
           <div className="market-content">
-            <h2>Market Update</h2>
+            <div className="market-dropdown">
+              <h2>Market Update</h2>
+              <div className="dropdown" ref={dropdownRef}>
+                <span
+                  className="btn-dropdown"
+                  onClick={() => setDropdownVisible(!dropdownVisible)}
+                >
+                  Sort By: {selectedDropdownItem} <span>&#9662;</span>
+                </span>
+                {dropdownVisible && (
+                  <div className="dropdown-menu">
+                    <div
+                      className="dropdown-item"
+                      onClick={() => {
+                        handleDropdownItemClick(`Price`);
+                        handleSort(
+                          "current_price",
+                          priceSortOrder,
+                          setPriceSortOrder
+                        );
+                      }}
+                    >
+                      Price {sortClicked && arrow(priceSortOrder)}
+                    </div>
+                    <div
+                      className="dropdown-item"
+                      onClick={() => handleDropdownItemClick("Change")}
+                    >
+                      Change Percentage
+                    </div>
+                    <div
+                      className="dropdown-item"
+                      onClick={() => {
+                        handleDropdownItemClick("Marketcap");
+                        handleSort(
+                          "market_cap",
+                          marketCapSortOrder,
+                          setMarketCapSortOrder
+                        );
+                      }}
+                    >
+                      Market Cap {sortClicked && arrow(marketCapSortOrder)}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
             <div className="coin-list">
               <div className="list-top">
                 <p>Coin</p>
-                <p>Price</p>
+                <p onClick={handleSort}>Price </p>
                 <p>24 Change</p>
                 <p>Market Cap</p>
               </div>
@@ -111,6 +195,7 @@ function MarketUpdate() {
               <i
                 class="fa-sharp fa-solid fa-arrow-right fa-2xl"
                 onClick={handleNextPage}
+                disabled={currentPage === 5}
               ></i>
             </div>
           </div>

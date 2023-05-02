@@ -36,8 +36,12 @@ listener for the `scroll` event on the `window` object. */
         </Link>
 
         <div className="links topBotomBordersOut">
-          <a onClick={scrollToSection("hero")}>Home</a>
-          <a onClick={scrollToSection("market")}>Market</a>
+          <a href="#hero" onClick={scrollToSection("hero")}>
+            Home
+          </a>
+          <a href="#market" onClick={scrollToSection("market")}>
+            Market
+          </a>
         </div>
         <span className="icons-container">
           <a href="https://github.com/arrabisPiolo" target="_blank">

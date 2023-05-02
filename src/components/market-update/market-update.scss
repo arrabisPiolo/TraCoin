@@ -17,12 +17,27 @@ $color-blue-purp: linear-gradient(25deg, #2600fc, #ff00ea);
     display: flex;
     flex-direction: column;
     padding: 0 5rem;
+
+    .market-dropdown {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
+  .btn-dropdown {
+    background-color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 50px;
+    border-radius: 5px;
+    color: black;
+  }
+
   h2 {
     font-size: 4.5rem;
     text-align: center;
     padding-bottom: 1rem;
   }
+
   .list-top {
     display: grid;
     grid-template-columns: 30% 20% 20% 25%;
@@ -32,6 +47,7 @@ $color-blue-purp: linear-gradient(25deg, #2600fc, #ff00ea);
     font-weight: 700;
     background: $color-blue-purp;
     border-radius: 8px 8px 0 0;
+
     p:first-child {
       text-align: left;
       margin-left: 3rem;
@@ -69,6 +85,26 @@ $color-blue-purp: linear-gradient(25deg, #2600fc, #ff00ea);
       }
     }
   }
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background-color: white;
+  color: black;
+  border-radius: 0px 0px 5px 5px;
+  padding-top: 10px;
+  cursor: pointer;
+}
+.dropdown-item {
+  z-index: 100;
+  text-align: center;
+  cursor: pointer;
 }
 .green-text {
   color: green;

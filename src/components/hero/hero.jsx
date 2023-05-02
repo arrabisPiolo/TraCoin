@@ -17,7 +17,6 @@ function Hero() {
     };
     fetchData();
   }, []);
-  console.log(currencyData);
 
   const handleSort = (key, sortState, setSortState) => {
     const sortedData = [...currencyData].sort((a, b) => {
@@ -43,7 +42,7 @@ function Hero() {
     <>
       <section className="hero-section" id="hero">
         <div className="hero-content">
-          <h1>TRACK</h1>
+          <h1>TRACK YOUR</h1>
           <span>CRYPTOCURRENCIES</span>
           {/* <div className="btn-container">
             <button
