@@ -11,6 +11,7 @@ function MarketUpdate() {
   const [currentPage, setCurrentPage] = useState();
   const [priceSortOrder, setPriceSortOrder] = useState();
   const [marketCapSortOrder, setMarketCapSortOrder] = useState();
+  const [changeSortOrder, setChangeSortOrder] = useState();
   const [sortClicked, setSortClicked] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [selectedDropdownItem, setSelectedDropdownItem] = useState();
@@ -118,9 +119,16 @@ function MarketUpdate() {
                     </div>
                     <div
                       className="dropdown-item"
-                      onClick={() => handleDropdownItemClick("Change")}
+                      onClick={() => {
+                        handleDropdownItemClick("Change");
+                        handleSort(
+                          "current_price",
+                          changeSortOrder,
+                          setChangeSortOrder
+                        );
+                      }}
                     >
-                      Change Percentage
+                      Change Percentage {sortClicked && arrow(changeSortOrder)}
                     </div>
                     <div
                       className="dropdown-item"

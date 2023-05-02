@@ -5,15 +5,68 @@
 
   .coin-content {
     display: flex;
+    padding: 2.5rem;
     justify-content: center;
-    align-items: center;
     text-align: center;
     color: white;
     width: 100%;
-    height: 100vh;
+
     .top-details {
       display: flex;
       justify-content: space-between;
     }
+    .image-side {
+      width: 30%;
+      border-right: 2px solid white;
+      height: 70%;
+      align-items: center;
+      gap: 2rem;
+      p {
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+    }
+    .text-side {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 3rem;
+
+      .change,
+      .current,
+      .symbol {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        span {
+          font-size: 1.5rem;
+        }
+        p {
+          font-size: 1.5rem;
+          font-weight: 500;
+        }
+      }
+    }
+
+    h2 {
+      font-size: 3.3rem;
+    }
+
+    .description {
+      width: 100%;
+      height: 20rem;
+      overflow-y: auto;
+      margin-top: 2rem;
+      text-align: left;
+      p {
+        font-size: 1rem;
+        text-align: justify;
+        margin-right: 20px;
+      }
+    }
   }
+}
+a {
+  color: green;
 }

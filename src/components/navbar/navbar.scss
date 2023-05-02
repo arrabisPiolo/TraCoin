@@ -1,101 +1,5 @@
 $color-blue-purp: linear-gradient(25deg, #2600fc, #ff00ea);
 
-// @mixin flex {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-// }
-
-// nav {
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   left: 0;
-//   z-index: 200;
-//   color: white;
-// }
-
-// .navbar {
-//   @include flex;
-//   padding: 20px 30px;
-//   max-width: 120rem;
-
-//   p {
-//     font-size: 3rem;
-//   }
-//   .container {
-//     @include flex;
-
-//     a {
-//       color: #fff;
-//       text-decoration: none;
-//       font-size: 20px;
-//       margin: 0px 40px;
-//       padding: 10px 20px;
-//       position: relative;
-//       z-index: 0;
-//       cursor: pointer;
-//       &:hover {
-//         transition: all 0.3s;
-//         background-clip: text;
-//         -webkit-background-clip: text;
-//         color: transparent;
-//         background-image: $color-blue-purp;
-//       }
-//       &::after,
-//       &::before {
-//         position: absolute;
-//         left: 0px;
-//         width: 100%;
-//         height: 2px;
-//         background: #fff;
-//         content: "";
-//         opacity: 0;
-//         transition: all 0.3s;
-//       }
-//       &::before {
-//         top: 0px;
-//         transform: translateY(10px);
-//       }
-//       &::after {
-//         bottom: 0px;
-//         transform: translateY(-10px);
-//       }
-//       &:hover::before,
-//       &:hover::after {
-//         opacity: 1;
-//         transform: translateY(0px);
-//       }
-//     }
-//   }
-// }
-// span {
-//   display: flex;
-//   gap: 2rem;
-
-//   i {
-//     cursor: pointer;
-
-//     @media (max-width: 750px) {
-//       display: none;
-//     }
-
-//     &:hover {
-//       transition: all 0.3s;
-//       background-clip: text;
-//       -webkit-background-clip: text;
-//       color: transparent;
-//       background-image: $color-blue-purp;
-//     }
-//   }
-// }
-
-// .sticky-nav {
-//   background-color: black;
-//   box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.16);
-//   position: fixed;
-// }
-
 .navbar {
   display: flex;
   justify-content: center;
@@ -124,7 +28,10 @@ $color-blue-purp: linear-gradient(25deg, #2600fc, #ff00ea);
   p {
     font-size: 3rem;
     font-weight: 700;
-    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(25deg, #2600fc, #ff00ea);
   }
   .links {
     display: flex;

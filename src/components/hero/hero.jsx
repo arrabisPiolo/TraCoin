@@ -34,38 +34,13 @@ function Hero() {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  // const intervalId = setInterval(() => {
-  //   fetchData();
-  // }, 60000);
-
   return (
     <>
       <section className="hero-section" id="hero">
         <div className="hero-content">
           <h1>TRACK YOUR</h1>
           <span>CRYPTOCURRENCIES</span>
-          {/* <div className="btn-container">
-            <button
-              className="btn-price"
-              onClick={() =>
-                handleSort("current_price", priceSortOrder, setPriceSortOrder)
-              }
-            >
-              Sort by price {priceSortOrder === "asc" ? `Up` : `Down`}
-            </button>
-            <button
-              className="btn-price"
-              onClick={() =>
-                handleSort(
-                  "market_cap",
-                  marketCapSortOrder,
-                  setMarketCapSortOrder
-                )
-              }
-            >
-              Sort by Marketcap {marketCapSortOrder === "asc" ? `Up` : `Down`}
-            </button>
-          </div> */}
+
           {currencyData.length === 0 ? (
             <div className="loader"></div>
           ) : (
@@ -77,7 +52,6 @@ function Hero() {
                   price_change_percentage_24h,
                   current_price,
                   image,
-                  market_cap,
                 }) => (
                   <>
                     <Link to={`/coin/${id}`} key={id}>
@@ -103,7 +77,6 @@ function Hero() {
                         <p>
                           {"$" + numberWithCommas(current_price.toFixed(2))}
                         </p>
-                        <p>{numberWithCommas(market_cap)}</p>
                       </div>
                     </Link>
                   </>
