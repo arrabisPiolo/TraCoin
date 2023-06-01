@@ -7,7 +7,7 @@
 The website is connected to the Coingecko API, which is a popular source of data for cryptocurrency information. Coingecko provides data on thousands of cryptocurrencies, including their current price, historical price data, trading volume, market cap, and other important metrics. By using this API, the website can provide users with real-time information about the latest cryptocurrency prices and market trends.
 </p>
 
-👉 Live Demo: <a href='https://coindom-crypto-search.vercel.app/'>Coindom Demo</a>
+👉 Live Demo: <a href='https://tra-coin.vercel.app/'>Coindom Demo</a>
 
 <h3>Build with:</h3>
 
@@ -31,5 +31,5 @@ The website is connected to the Coingecko API, which is a popular source of data
 <h3 align='center'>Coin Page 🪙</h3>
 
 <div align='center'>
-<img src='https://user-images.githubusercontent.com/105128267/220609015-e64cb000-b8d2-41ce-8a9a-e610d2f1ae5b.png'/>
+<img src='https://github.com/arrabisPiolo/TraCoin/assets/101545333/e8664f49-743d-49d3-8d59-ae33f68abc51.jpg'/>
 </div>
