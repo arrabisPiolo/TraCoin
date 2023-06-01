@@ -22,7 +22,8 @@ The website is connected to the Coingecko API, which is a popular source of data
 <h3 align='center'>Home Page 🏡</h3>
 
 <div align='center'>
-</div>![tracoin](https://github.com/arrabisPiolo/TraCoin/assets/101545333/d5e15efa-324d-4891-8204-22b2c389e561)
+<img src='https://github.com/arrabisPiolo/TraCoin/assets/101545333/d5e15efa-324d-4891-8204-22b2c389e561.jpg'/>
+
 
 
 <br><br>
